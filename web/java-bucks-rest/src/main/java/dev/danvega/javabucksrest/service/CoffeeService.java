@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 @Service
 public class CoffeeService {
@@ -42,10 +43,15 @@ public class CoffeeService {
         return newCoffee;
     }
 
+    public List<Coffee> findAllBySize(Size size) {
+        return coffees.stream().filter(coffee -> coffee.size() == size).collect(Collectors.toList());
+    }
+
     @PostConstruct
     private void init() {
         coffees.add(new Coffee(id.incrementAndGet(), "Caffè Americano", Size.GRANDE, BigDecimal.valueOf(4.99),BigDecimal.valueOf(2.99)));
         coffees.add(new Coffee(id.incrementAndGet(), "Caffè Latte", Size.VENTI, BigDecimal.valueOf(4.99),BigDecimal.valueOf(2.99)));
         coffees.add(new Coffee(id.incrementAndGet(), "Caffè Caramel Macchiato", Size.TALL, BigDecimal.valueOf(4.99),BigDecimal.valueOf(2.99)));
     }
+
 }
