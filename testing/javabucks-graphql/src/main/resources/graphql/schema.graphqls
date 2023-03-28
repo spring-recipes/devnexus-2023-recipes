@@ -1,0 +1,17 @@
+type Coffee {
+    id: ID!
+    name: String
+    size: Size
+}
+
+enum Size {
+    SHORT,
+    TALL,
+    GRANDE,
+    VENTI,
+}
+
+type Query {
+    findAll: [Coffee]!
+    findOne(id: ID): Coffee
+}
