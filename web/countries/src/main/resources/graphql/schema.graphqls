@@ -1,0 +1,11 @@
+type Country {
+  name: String!
+  emoji: String
+  currency: String
+  code: String
+  capital: String
+}
+
+type Query{
+    findAllCountries: [Country]!
+}
