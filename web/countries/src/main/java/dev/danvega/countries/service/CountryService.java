@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class CountryService {
 
-    private HttpGraphQlClient graphQlClient;
+    private final HttpGraphQlClient graphQlClient;
 
     public CountryService() {
         WebClient client = WebClient.builder()
